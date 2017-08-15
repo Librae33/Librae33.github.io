@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			#box {
+				height: 100px;
+				width: 100px;
+				background: black;
+				position: absolute;
+				top: 200px;
+				left: 100px;
+				cursor: move;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="box"></div>
+		<script>
+			window.onload = function() {
+				var oBox = document.getElementById("box");
+				var disX = 0;
+				var disY = 0;
+				var minLeft = 0,
+					minTop = 0,
+					maxLeft = document.documentElement.clientWidth - oBox.offsetWidth,
+					maxTop = document.documentElement.clientHeight - oBox.offsetHeight;
+				oBox.onmousedown = function(e) {
+					e = e || window.event;
+					disX = e.clientX - oBox.offsetLeft;
+					disY = e.clientY - oBox.offsetHeight;
+					document.onmousemove = function(e) {
+						e = e || window.event;
+						var left = e.clientX - disX;
+						var top = e.clientY - disY;
+						//边界判断
+						//左右边界
+						if(left < minLeft){
+							oBox.style.left=0;
+						}else if(left > maxLeft){
+							oBox.style.left=maxLeft+ "px";
+						}else{
+							oBox.style.left = left + "px";
+						};
+						//上下
+						if(top < minTop){
+							oBox.style.top=0;
+						}else if(top > maxTop){
+							oBox.style.top=maxTop+ "px";
+						}else{
+							oBox.style.top = top + "px";
+						};
+						
+						
+					};
+					document.onmouseup = function(e) {
+						document.onmousemove = null;
+					};
+					return false;
+				};
+
+			};
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+			.box{
+				position: relative;
+				margin: 20px auto;
+				width: 500px;
+				
+			}
+			.box img{
+				float: left;
+				height: 75px;
+				width: 100px;
+				margin-left: 10px;
+				border: 1px solid gainsboro;
+			}
+			.mark{
+				position: absolute;
+				display: none;
+				top: 0;
+				left: 0;
+				height: 300px;
+				width: 400px;
+				border: 1px solid gainsboro;
+			}
+			.mark img{
+				margin-left: 0;
+				height: 100%;
+				width: 100%;
+			}
+		</style>
+		<script src="js/jquery-1.8.3.min.js"></script>
+	</head>
+	<body>
+		<div class="box" id="box">
+			<img src="img/apple_1.jpg" bigImg="img/apple_1_bigger.jpg"/>
+			<img src="img/apple_2.jpg" bigImg="img/apple_2_bigger.jpg"/>
+			<img src="img/apple_3.jpg" bigImg="img/apple_3_bigger.jpg"/>
+			<img src="img/apple_4.jpg" bigImg="img/apple_4_bigger.jpg"/>
+			<div class="mark" id="mark">
+				<img src="img/apple_1_bigger.jpg" />
+			</div>
+		</div>
+		<script>
+			$(function(){
+				var $box=$("#box");
+				var $mark=$("#mark");
+				var offset=$box.offset();
+				$("#box>img").bind("mouseover",function(e){
+					e=e||window.event;
+					e.target=e.target||e.srcElement;
+					var left=e.clientX-offset.left+10;
+					var top=e.clientY-offset.top+10;
+					$mark.stop().show(500).css({"left":left,"top":top}).find("img").attr("src",e.target.getAttribute("bigImg"));
+				}).bind("mousemove",function(e){
+					e=e||window.event;
+					e.target=e.target||e.srcElement;
+					var left=e.clientX-offset.left+10;
+					var top=e.clientY-offset.top+10;
+					$mark.css({"left":left,"top":top});
+				}).bind("mouseout",function(){
+					$mark.stop().hide(500);
+				});
+			});
+		</script>
+	</body>
+</html>

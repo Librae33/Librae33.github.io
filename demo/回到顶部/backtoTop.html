@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			* {
+				padding: 0;
+				margin: 0;
+			}
+			
+			html,
+			body {
+				width: 100%;
+				height: 200%;
+			}
+			
+			body {
+				background: -webkit-linear-gradient(top, aquamarine, antiquewhite, brown, aquamarine, darkcyan);
+				background: linear-gradient(top, aquamarine, antiquewhite, brown, aquamarine, darkcyan);
+			}
+			
+			#backToTop {
+				display: none;
+				text-decoration: none;
+				height: 50px;
+				width: 50px;
+				position: fixed;
+				bottom: 50px;
+				right: 50px;
+				background: gray;
+				border-radius: 50%;
+				font-size: 30px;
+				color: white;
+				text-align: center;
+				line-height: 50px;
+			}
+			
+			#backToTop:hover {
+				background: white;
+				color: black;
+			}
+		</style>
+	</head>
+
+	<body>
+		<a id="backToTop" href="javascript:;">↑</a>
+		<script>
+			window.onload = function() {
+
+
+				var backToTop = document.getElementById("backToTop");
+				window.onscroll = showBtn;
+
+				function showBtn() {
+					var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+					var winHeight = document.documentElement.clientHeight || document.body.clientHeight;
+					if(scrollTop > winHeight) {
+						backToTop.style.display = "block";
+					}
+				}
+				backToTop.onclick = function() {
+					window.onscroll = null;
+					backToTop.style.display = "none";
+					var interval = 10,
+						duration = 500,
+						target = document.documentElement.scrollHeight || document.body.scrollHeight;
+					var step = (target / duration) * interval;
+					var timer = setInterval(function() {
+						var curTop = document.documentElement.scrollTop || document.body.scrollTop;
+						if(curTop <= 0) {
+							window.onscroll = showBtn;
+							clearInterval(timer);
+							return;
+						}
+						curTop -= step;
+						document.documentElement.scrollTop = curTop;
+						document.body.scrollTop = curTop;
+					}, interval);
+				};
+			};
+		</script>
+	</body>
+
+</html>
