@@ -1,0 +1,33 @@
+*{
+  margin: 0px;
+  padding: 0px;
+  font-family: "微软雅黑";
+}
+#box{
+	width: 50%;
+}
+#box input{
+	height:30px;
+	width:500px;
+	border: 0.2px solid #CCCCCCC;
+	border-radius:5px;
+}
+#box .title{
+	text-align: right;
+	font-size: 16px;
+	font-weight: bold;
+}
+#box .tip{
+	font-size: 14px;
+	visibility: hidden;
+}
+#box #submit{
+	height: 40px;
+	width: 100px;
+	border-radius: 5px;
+	background:rgb(47,121,186) ;
+	float: right;
+	margin-right: 10px;
+	color: #FFFFFF;
+	cursor: pointer;
+}

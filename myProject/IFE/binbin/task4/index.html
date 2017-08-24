@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			ul>li {
+				width: 35px;
+				height: 35px;
+				background: #FF0000;
+				color: #FFFFFF;
+				line-height: 30px;
+				text-align: center;
+				list-style: none;
+				float: left;
+				margin: 10px;
+			}
+			
+			#box {
+				margin: 20px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="box">
+			<div class="btnGroup">
+				<input type="text" id="text" />
+				<input id="left-in" value="左侧入" type="button" />
+				<input id="right-in" value="右侧入" type="button" />
+				<input id="left-out" value="左侧出" type="button" />
+				<input id="right-out" value="右侧出" type="button" />
+			</div>
+			<ul id="ul">
+				<li>10</li>
+				<li>3</li>
+				<li>7</li>
+				<li>12</li>
+				<li>11</li>
+			</ul>
+		</div>
+		<script>
+			window.onload = function() {
+				var leftIn = document.getElementById("left-in"),
+					leftOut = document.getElementById("left-out"),
+					rightIn = document.getElementById("right-in"),
+					rightOut = document.getElementById("right-out");
+				var oUl=document.getElementById("ul");
+				var inputText = document.getElementById("text");
+				var textValue = null;
+				function prepend(newEle,container){
+					var first=container.firstChild;
+				    container.insertBefore(newEle,first);
+				}
+				leftIn.onclick = function() {
+					textValue = inputText.value;
+					var oLi = document.createElement("li");
+					oLi.innerHTML = textValue;
+					prepend(oLi,oUl);
+				};
+				leftOut.onclick=function(){
+					var first=oUl.firstElementChild;
+					oUl.removeChild(first);
+					alert(first.innerText);
+					
+				};
+				rightOut.onclick=function(){
+					var last=oUl.lastElementChild;
+					oUl.removeChild(last);
+					alert(last.innerText);
+					
+				};
+				rightIn.onclick = function() {
+					textValue = inputText.value;
+					var oLi = document.createElement("li");
+					oLi.innerHTML = textValue;
+					oUl.appendChild(oLi);
+				};
+			};
+		</script>
+	</body>
+
+</html>

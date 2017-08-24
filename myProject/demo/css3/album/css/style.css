@@ -1,0 +1,61 @@
+.pic{
+	width: 150px;
+	height: 150px;
+	background: white;
+	border:8px solid cadetblue;
+	transition:all 0.5s;
+	padding: 10px;
+	box-shadow: 10px 10px 20px rgba(50,50,50,0.5);
+
+}
+
+body{
+	background: #cccccc;
+}
+.box{
+	width: 1000px;
+	height: 450px;
+	background: darkcyan;
+	margin:auto;
+	position: absolute;
+	top:10px;
+	left: 10px;
+	right:10px;
+	bottom:10px;
+	
+
+}
+.pic:hover{
+	transform: rotate(0) scale(1.2);
+	position: relative;/*要想增加层级，必须增加定位属性*/
+	z-index: 100;
+}
+.pic1{
+		transform: rotate(20deg);
+}
+.pic2{
+		transform: rotate(-20deg);
+}
+.pic3{
+		transform: rotate(30deg);
+}
+.pic4{
+		transform: rotate(10deg);
+}
+.pic5{
+		transform: rotate(5deg);
+}
+.pic6{
+		transform: rotate(15deg);
+}
+.pic7{
+		transform: rotate(-15deg);
+}
+.pic8{
+		transform: rotate(25deg);
+}
+.pic9{
+		transform: rotate(10deg);
+}
+
+

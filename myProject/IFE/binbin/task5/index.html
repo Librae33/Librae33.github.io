@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			ul>li {
+				width: 35px;
+				height: 35px;
+				background: #FF0000;
+				color: #FFFFFF;
+				line-height: 30px;
+				text-align: center;
+				list-style: none;
+				display: inline-block;
+				margin: 10px;
+			}
+			
+			#box {
+				margin: 20px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="box">
+			<div class="btnGroup">
+				<input type="text" id="text" />
+				<input id="left-in" value="左侧入" type="button" />
+				<input id="right-in" value="右侧入" type="button" />
+				<input id="left-out" value="左侧出" type="button" />
+				<input id="right-out" value="右侧出" type="button" />
+			</div>
+			<ul id="ul">
+
+			</ul>
+			<ul id="newUl"></ul>
+			<input id="sort-btn" value="排序" type="button" />
+
+		</div>
+		<script>
+			window.onload = function() {
+
+				~ function() {
+					var leftIn = document.getElementById("left-in"),
+						leftOut = document.getElementById("left-out"),
+						rightIn = document.getElementById("right-in"),
+						rightOut = document.getElementById("right-out");
+					var oUl = document.getElementById("ul");
+					var newUl = document.getElementById("newUl");
+					var inputText = document.getElementById("text");
+					var textValue = null;
+					var sortBtn = document.getElementById("sort-btn");
+					var oLis = document.getElementById("ul").children;
+					var EventUtil = {
+						addHandler: function(el, type, handler) {
+							if(el.addEventListener) {
+								el.addEventListener(type, handler, false);
+							} else if(el.attachEvent) {
+								el.attachEvent('on' + type, handler);
+							} else {
+								el['on' + type] = handler;
+							}
+						}
+					}
+
+					function prepend(newEle, container) {
+						var first = container.firstChild;
+						container.insertBefore(newEle, first);
+					}
+					EventUtil.addHandler(leftIn, "click", function() {
+						textValue = inputText.value;
+						if(textValue<10||>100){
+							alert("请输入10~100之间的数！");
+						}
+						var oLi = document.createElement("li");
+						oLi.style.height = textValue + "px";
+						prepend(oLi, oUl);
+						
+					});
+					EventUtil.addHandler(leftOut, "click", function() {
+						var first = oUl.firstElementChild;
+						oUl.removeChild(first);
+						alert(first.innerText);
+					});
+					EventUtil.addHandler(rightOut, "click", function() {
+						var last = oUl.lastElementChild;
+						oUl.removeChild(last);
+						alert(last.innerText);
+					});
+					EventUtil.addHandler(rightIn, "click", function() {
+						textValue = inputText.value;
+						if(textValue<10||>100){
+							alert("请输入10~100之间的数！");
+						}
+						var oLi = document.createElement("li");
+						oLi.style.height = textValue + "px";
+						oUl.appendChild(oLi);
+					});
+
+					EventUtil.addHandler(rightOut, "click", function() {
+						var ary = [];
+						for(var i = 0; i < oLis.length; i++) {
+							ary.push(parseInt(getStyle(oLis[i], "height")));
+						}
+						bubbleSort(ary);
+						for(var j = 0; j < ary.length; j++) {
+							var oLi = document.createElement("li");
+							oLi.style.height = ary[j] + "px";
+							newUl.appendChild(oLi);
+						}
+					});
+
+					function bubbleSort(ary) {
+						var temp = null;
+						for(var i = 0; i < ary.length - 1; i++) {
+							for(var j = 0; j < ary.length - 1 - i; j++) {
+								if(ary[j] > ary[j + 1]) {
+									temp = ary[j];
+									ary[j] = ary[j + 1];
+									ary[j + 1] = temp;
+								}
+							}
+						}
+						return ary;
+					}
+
+					function getStyle(curEle, attr) { //获取元素的样式，兼容IE
+						var val = null;
+						if(typeof window.getComputedStyle === "function") {
+							val = window.getComputedStyle(curEle, null)[attr];
+						} else {
+
+							val = curEle.currentStyle[attr];
+						}
+						return val;
+					}
+				}();
+
+			};
+		</script>
+	</body>
+
+</html>

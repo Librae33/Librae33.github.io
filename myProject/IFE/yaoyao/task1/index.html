@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#btn {
+				width: 50px;
+				height: 30px;
+				color: #FFFFFF;
+				background: rgb(46, 120, 185);
+				border-radius: 5px;
+			}
+			
+			input[type=text] {
+				height: 22px;
+			}
+			
+			#tip {
+				color: #CCCCCC;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="box">
+			<form name="form">
+				<span>名称</span>
+				<input type="text" name="username"  id="usename"/>
+				<input type="button" value="验证" id="btn" />
+				<p id="tip">必填，长度为4到14个字符</p>
+					
+			</form>
+
+		</div>
+		<script>
+			function validate_form() {
+				var length = 0;
+				var tip = document.getElementById("tip");
+				var value = form.username.value;
+				var username=document.getElementById("usename");
+				if(value.length ===0) {
+					tip.style.color = "#FF0000";
+					tip.innerText = "姓名不能为空";
+					return false;
+				} else {
+					for(var i = 0; i < value.length; i++) {
+						if(value.charCodeAt() < 0 || value.charCodeAt() > 255) {
+							length += 2;
+						} else {
+							length += 1;
+						}
+					}
+					if(length >= 14 || length <= 4) {
+						tip.style.color = "#FF0000";
+						username.style.borderColor="#FF0000"
+						tip.innerText = "格式错误，长度为4到14个字符";
+						return false;
+					} else {
+						tip.style.color = "#3CB371";
+						username.style.borderColor="#3CB371"
+						tip.innerText = "格式正确";
+						return true;
+					}
+
+				}
+
+			}
+			var btn = document.getElementById("btn");
+			btn.onclick = function() {
+				validate_form();
+			};
+		</script>
+	</body>
+
+</html>
