@@ -1,5 +1,7 @@
 /*公有*/
-
+body{
+	min-width: 700px;
+}
 .comWidth {
 	width: 1000px;
 	margin: 0 auto;
@@ -112,7 +114,7 @@ input {
 /*searchBox*/
 
 .searchBox {
-	width: 430px;
+	width: 432px;
 	padding-left: ;
 	padding-top: 23px;
 	padding-left: 150px;
@@ -121,13 +123,14 @@ input {
 .searchBox .searchText {
 	width: 360px;
 	height: 35px;
-	line-height: 35px\9;
+	line-height: 35px;
 	text-indent: 10px;
+	
 }
 
 .searchBox .searchMenu {
 	width: 70px;
-	height: 37px;
+	height: 35px;
 	background:  #651C4D;
 	color: white;
 }
