@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>响应式图片</title>
+	<style type="text/css">
+	.modal{
+		height:100% ;
+		width: 100%;
+		background: rgba(0,0,0,0.8);
+		display: none;
+		position: fixed;
+		padding-top: 50px;
+	}
+
+	.content{
+		display: block;
+		max-width:50%;
+		width: 500px;
+		height: 400px;
+	}
+	.img{
+		width: 330px;
+		height: 200px;
+		border-radius: 10%;
+		border: 1px solid black;
+		float: left;
+		transition:2s;
+
+	}
+	.img:hover{
+		opacity: 0.6;
+		cursor: pointer;
+		filter:alpha(opacity=60); /*ie*/
+	}
+	.close{
+		font-size: 40px;
+		position: absolute;
+		top: 10px;
+		left: 90%;
+		color: white;
+	    font-weight: bolder;
+	    cursor: pointer;
+	}
+	.content {
+		margin: 0 auto;
+		width:60%; 
+		overflow: hidden;
+		animation-name:zoom;
+		animation-duration:1s;
+		-moz-animation-name:zoom;
+		-moz-animation-duration:1s;
+		-webkit-animation-name:zoom;
+		-webkit-animation-duration:1s;
+		-ms-animation-name:zoom;
+		-ms-animation-duration:1s;
+	}
+	@keyframes zoom{
+		from{transform:scale(0.1)}
+		to{
+			transform:scale(1.2)
+		}
+
+	}
+	-moz-@keyframes zoom{
+		from{transform:scale(0.1)}
+		to{
+			transform:scale(1.2)
+		}
+
+	
+	-webkit-@keyframes zoom{
+		from{transform:scale(0.1)}
+		to{
+			transform:scale(1.2)
+		}
+
+	}
+	-ms-@keyframes zoom{
+		from{transform:scale(0.1)}
+		to{
+			transform:scale(1.2)
+		}
+
+	}
+
+
+	
+	</style>
+	<script type="text/javascript">
+	window.onload=function(){
+		var oModal=document.getElementsByClassName("modal")[0];
+		var oClose=document.getElementsByClassName("close")[0];
+		var oImg=document.getElementsByClassName("img")[0];
+		var oContent=document.getElementsByClassName("content")[0];
+		oImg.onclick=function(){
+			oModal.style.display="block";
+            oContent.src=this.src;
+
+
+		}
+		oClose.onclick=function(){
+			oModal.style.display="none";
+		}
+
+	};
+	</script>
+</head>
+<body>
+	<img class="img"src="lg06.jpg">
+<div class="modal" >
+	<img  class="content">
+	<span class="close">×</span>
+	</div>
+</body>
+</html>

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<script>
+			window.onload = function() {
+				var timer = null;
+
+				function startAnimation(count, name) {
+					clearInterval(timer);
+					var cat = document.getElementById("cat");
+					var num = 0;
+					/*var arr = ["angry", "cymbal", "drink", "eat", "fart", "footLeft", "footRight", "knockout", "pie", "scatch", "stomach"];*/
+					timer = setInterval(function() {
+						if(++num <= count) {
+							if(num < 10) {
+								num = "0" + num;
+
+							}
+							cat.src = "img/Animations/" + name + "/" + name + "_" + num + ".jpg";
+						}else{
+							clearInterval(timer);	
+						}
+
+					}, 100);
+					 
+				}
+				var eat = document.getElementById("eat");
+				var stomach = document.getElementById("stomach");
+				var scratch = document.getElementById("scratch");
+				var footLeft = document.getElementById("footLeft");
+				var footRight = document.getElementById("footRight");
+				var fart = document.getElementById("fart");
+				var drink = document.getElementById("drink");
+				var pie = document.getElementById("pie");
+				eat.onclick = function() {
+					startAnimation(39, "eat");
+
+				}
+				stomach.onclick = function() {
+					startAnimation(33, "stomach");
+
+				}
+				scratch.onclick = function() {
+					startAnimation(55, "scratch");
+
+				}
+				footLeft.onclick = function() {
+					startAnimation(29, "footLeft");
+
+				}
+				footRight.onclick = function() {
+					startAnimation(29, "footRight");
+
+				}
+				fart.onclick = function() {
+					startAnimation(27, "fart");
+
+				}
+				knockout.onclick = function() {
+					startAnimation(80, "knockout");
+
+				}
+				angry.onclick = function() {
+					startAnimation(25, "angry");
+
+				}
+				drink.onclick = function() {
+					startAnimation(80, "drink");
+
+				}
+				pie.onclick = function() {
+					startAnimation(23, "pie");
+
+				}
+				
+
+			}
+		</script>
+		<style>
+			* {
+				/*初始化边距*/
+				margin: 0px;
+				padding: 0px;
+			}
+			
+			body {
+				height: 100%;
+				width: 100%;
+			}
+			
+			#cat {
+				width: 100%;
+				height: 100%;
+			}
+			
+			#eat {
+				width: 200px;
+				height: 100px;
+				position: absolute;
+				top: 620px;
+				left: 400px;
+
+			}
+			
+			#stomach {
+				width: 200px;
+				height: 200px;
+				position: absolute;
+				top: 1150px;
+				left: 400px;
+		
+			}
+			#scratch{
+				width: 80px;
+				height: 150px;
+				position: absolute;
+				top: 1100px;
+				left: 200px;
+				
+			}
+			div:hover{
+				cursor: pointer;
+			}
+			#footLeft{
+				width: 100px;
+				height: 80px;
+				position: absolute;
+				top: 1423px;
+				left: 362px;
+				
+			}
+			#footRight{
+				width: 100px;
+				height: 80px;
+				position: absolute;
+				top: 1423px;
+				left: 500px;
+				
+			}
+			#fart{
+				width: 130px;
+				height: 80px;
+				position: absolute;
+				top: 510px;
+				left: 440px;
+				
+			}
+			#knockout{
+				width: 80px;
+				height: 80px;
+				position: absolute;
+				top: 850px;
+				left: 620px;
+				
+			}
+			#angry{
+				width: 100px;
+				height: 100px;
+				position: absolute;
+				top: 570px;
+				left: 620px;
+				
+				
+			}
+			#drink{
+				width: 100px;
+				height: 100px;
+				position: absolute;
+				top: 570px;
+				left: 260px;
+				
+			}
+			#pie{
+				width: 100px;
+				height: 100px;
+				position: absolute;
+				top: 390px;
+				left: 330px;
+				
+				
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<img id="cat" src="img/Animations/angry/angry_03.jpg" />
+		<div id="eat">
+
+		</div>
+		<div id="drink">
+
+		</div>
+		<div id="stomach">
+
+		</div>
+		<div id="scratch">
+
+		</div>
+		<div id="footLeft">
+
+		</div>
+		<div id="footRight">
+
+		</div>
+		<div id="fart">
+
+		</div>
+		<div id="knockout">
+
+		</div>
+		<div id="angry">
+
+		</div>
+		<div id="pie">
+
+		</div>
+
+
+	</body>
+
+</html>
