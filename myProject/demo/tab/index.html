@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.tab .select {
+				display: block;
+			}
+			
+			.tab div {
+				display: none;
+			}
+			
+			.tab ul {
+				list-style: none;
+			}
+			
+			.tab ul li {
+				float: left;
+				margin: 10px;
+				cursor: pointer;
+			}
+			.clearfix:after {
+				content: ".";
+				display: block;
+				height: 0;
+				clear: both;
+				visibility: hidden;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="tab"  id="tab1">
+			<ul class="clearfix">
+				<li>选项卡1</li>
+				<li>选项卡2</li>
+				<li>选项卡3</li>
+			</ul>
+			<div class="select">
+				<div></div>
+				111111111111
+			</div>
+			<div>
+				22222
+			</div>
+			<div>
+				3333333333
+			</div>
+		</div>
+		<script src="js/utils.js"></script>
+		<script src="js/tab.js"></script>
+	</body>
+
+</html>
