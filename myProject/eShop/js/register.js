@@ -1,15 +1,8 @@
-~ function() {
-	var username = document.getElementById("username");
-	var tipUsername = document.getElementById("tip_username");
-	var password = document.getElementById("password");
-	var tipPassword = document.getElementById("tip_password");
-	var confirmPassword = document.getElementById("confirm_password");
-	var tipConfirmPassword = document.getElementById("tip_Confirmpassword");
-	var email = document.getElementById("email");
-	var tipEmail = document.getElementById("tip_email");
-	var phone = document.getElementById("phone");
-	var tipPhone = document.getElementById("tip_phone");
-	var submitBtn=document.getElementById("submit");
+~ function() {	
+	function $(obj){
+		return document.getElementById(obj);
+	}
+		
 	var EventUtil = {
 			addHandler: function(el, type, handler) {
 				if(el.addEventListener) {
@@ -44,6 +37,8 @@
 	}
 	//验证用户名
 	function check_username() {
+		var username = $("username");
+		var tipUsername = $("tip_username");
 		var length = username.value.length;
 		if(username.value == "") {
 			error_style(tipUsername, username, "名称不能为空");
@@ -66,6 +61,8 @@
 	});
 	//验证密码
 	function check_password() {
+		var password = $("password");
+	    var tipPassword = $("tip_password");
 		var reg = new RegExp('(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[^a-zA-Z0-9]).{6,20}');
 		if(password.value == "") {
 			error_style(tipPassword, password, "密码不能为空");
@@ -87,6 +84,8 @@
 	});
 
 	function confirm_Password() {
+		var confirmPassword = $("confirm_password");
+	    var tipConfirmPassword = $("tip_Confirmpassword");
 		if(confirmPassword.value==""){
 			error_style(tipConfirmPassword, confirmPassword, "密码不能为空");
 			return false;
@@ -109,6 +108,8 @@
 	});
 	//验证邮箱
 	function check_email() {
+		var email = $("email");
+	    var tipEmail = $("tip_email");
 		var reg = /^[\w.-]+@[0~9a-zA-Z]+(\.[a-zA-Z0-9]{2,4}){1,2}$/g;
 		if(email.value == "") {
 			error_style(tipEmail, email, "邮箱不能为空");
@@ -131,6 +132,8 @@
 	
 	//验证手机号
 	function check_phone(){
+		var phone = $("phone");
+	   var tipPhone = $("tip_phone");
 		var reg = /^1\d{10}$/g;
 		if(phone.value == "") {
 			error_style(tipPhone,phone, "手机号码不能为空");
@@ -150,6 +153,7 @@
 		check_phone();
 	});
 	//提交
+	var submitBtn=document.getElementById("submit");
 	EventUtil.addHandler(submitBtn, "click", function() {
 		if(check_email()&&check_password()&&check_username()&&check_phone()&&confirm_Password()){
 			alert("提交成功！");

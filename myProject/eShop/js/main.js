@@ -1,4 +1,7 @@
 ~ function() {
+	function $(obj){
+		return document.getElementById(obj);
+	}
 	
 	//实现产品详情页（description.html）的商品选项卡切换
 	function changeTab() {
@@ -20,33 +23,28 @@
 	}
 	//实现产品详情页（description.html）的商品展示图片大小图切换
 	function changePic() {
-		var bigImg = document.getElementById("bigImg");
-		var smallImg = document.getElementById("smallImg");
 		var oImgs = smallImg.getElementsByTagName("img");
-		smallImg.onclick = function(e) {
+		$("smallImg").onclick = function(e) {
 			e = e || window.event;
 			e.target = e.target || e.srcElement;
 			var sib = utils.siblings(e.target.parentNode);
 			for(var i = 0; i < sib.length; i++) {
 				utils.removeClass(sib[i], "smallImg_select");
 			}
-
 			utils.addClass(e.target.parentNode, "smallImg_select");
-			bigImg.src = e.target.src;
+			$("bigImg").src = e.target.src;
 
 		};
 
 	}
 	//实现产品详情页（description.html）的商品展示图片放大镜效果
 	function photoLoupe() {
-		var box = document.getElementById("box");
-		var mark = document.getElementById("mark");
-		var bigBox = document.getElementById("bigBox");
+		var box = $("box");
+		var mark = $("mark");
+		var bigBox = $("bigBox");
 		var tempLeft = 0,
 			tempTop = 0;
 		var bigImg = bigBox.getElementsByTagName("img")[0];
-		
-
 		function setPosition(e) {		
 			var left = e.clientX - box.offsetLeft - (mark.offsetWidth / 2);
 			var top = e.clientY - box.offsetTop - (mark.offsetHeight / 2);
@@ -104,12 +102,12 @@
 	}
    //回到顶部效果
 		 function backTop() {
-			var backToTop = document.getElementById("backToTop");
+			var backToTop = $("backToTop");//按钮
 			window.onscroll = showBtn;
 			function showBtn() {
-				var b_scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+				var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
 				var winHeight = document.documentElement.clientHeight || document.body.clientHeight;
-				if(b_scrollTop > winHeight) {
+				if(scrollTop > winHeight) {
 					backToTop.style.display = "block";
 				}
 			}
@@ -121,15 +119,15 @@
 					target = document.documentElement.scrollHeight || document.body.scrollHeight;
 				var step = (target / duration) * interval;
 				var timer = setInterval(function() {
-					var b_curTop = document.documentElement.scrollTop || document.body.scrollTop;
-					if(b_curTop <= 0) {
+					var curTop = document.documentElement.scrollTop || document.body.scrollTop;
+					if(curTop <= 0) {
 						window.onscroll = showBtn;
 						clearInterval(timer);
 						return;
 					}
-					b_curTop -= step;
-					document.documentElement.scrollTop =b_curTop;
-					document.body.scrollTop = b_curTop;
+					curTop -= step;
+					document.documentElement.scrollTop =curTop;
+					document.body.scrollTop = curTop;
 				}, interval);
 				
 			};
