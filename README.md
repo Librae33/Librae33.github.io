@@ -41,9 +41,7 @@ DOM工具函数
 
 [css3 loading效果](http://github-26713243.oschina.io/librae33.github.io/myProject/demo/css3/index3.html)
 
-[选项卡](http://github-26713243.oschina.io/librae33.github.io/)
-
-[会说话的Tom猫（移动端）](http://github-26713243.oschina.io/librae33.github.io/myProject/demo/Tomcat/index.html)   
+[选项卡](http://github-26713243.oschina.io/librae33.github.io/)   
 
 [表格排序](http://github-26713243.oschina.io/librae33.github.io/myProject/tableSort/tableSort.html)
 
