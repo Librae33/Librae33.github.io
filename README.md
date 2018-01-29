@@ -45,7 +45,9 @@ DOM工具函数
 
 [表格排序](http://github-26713243.oschina.io/librae33.github.io/myProject/tableSort/tableSort.html)
 
-[图片zoom放大效果](http://github-26713243.oschina.io/librae33.github.io/myProject/demo/zoom/zoom.html)   
+[图片zoom放大效果](http://github-26713243.oschina.io/librae33.github.io/myProject/demo/zoom/zoom.html) 
+
+移动端](http://github-26713243.oschina.io/librae33.github.io/myProject/mobileProject/index.html)
 
 ***
 [百度前端学院](https://github.com/Librae33/IFE-task) 
